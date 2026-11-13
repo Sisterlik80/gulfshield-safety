@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GulfShield Safety Systems | Seguridad Contra Incendios y Detección de Gas Offshore</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos industriales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            950: '#07111f',
+                            900: '#0b192c',
+                            800: '#132743',
+                            700: '#1e3a5f',
+                        },
+                        safety: {
+                            red: '#dc2626',
+                            orange: '#ea580c',
+                            amber: '#f59e0b',
+                        },
+                        steel: {
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            500: '#64748b',
+                            800: '#1e293b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para barras de desplazamiento y detalles industriales */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b192c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ea580c;
+        }
+        .hero-pattern {
+            background-color: #07111f;
+            background-image: radial-gradient(rgba(234, 88, 12, 0.12) 1px, transparent 1px),
+                              linear-gradient(to bottom right, rgba(11, 25, 44, 0.92), rgba(7, 17, 31, 0.96));
+            background-size: 24px 24px, 100% 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-orange-600 selection:text-white">
+
+    <!-- Barra Superior de Contacto Rápido -->
+    <div class="bg-navy-950 text-slate-300 text-xs py-2 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-orange-500"></i>
+                    Base Operativa: Puerto Industrial / Zona Offshore Golfo
+                </span>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <span class="hidden md:flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                    Certificaciones: NFPA · SOLAS · ABS · DOT
+                </span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tel:+529380000000" class="hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-orange-500"></i>
+                    Emergencias 24/7: +52 (938) 123-4567
+                </a>
+                <a href="#contacto" class="text-orange-400 hover:text-orange-300 font-semibold transition">
+                    Soporte Técnico →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación Principal -->
+    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo de la Marca -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-white shadow-lg shadow-orange-600/20 group-hover:scale-105 transition">
+                        <i class="fa-solid fa-fire-extinguisher text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-white font-extrabold text-xl tracking-tight block leading-none">GULF<span class="text-orange-500">SHIELD</span></span>
+                        <span class="text-slate-400 text-[11px] font-semibold uppercase tracking-widest block mt-1">Safety Systems & Marine</span>
+                    </div>
+                </a>
+
+                <!-- Enlaces Desktop -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                    <a href="#inicio" class="hover:text-white transition">Inicio</a>
+                    <a href="#catalogo" class="hover:text-white transition">Catálogo y Servicios</a>
+                    <a href="#normativas" class="hover:text-white transition">Certificaciones</a>
+                    <a href="#contacto" class="hover:text-white transition">Levantamiento Técnico</a>
+                </nav>
+
+                <!-- Botón Carrito de Cotización y Menú Móvil -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleQuoteDrawer()" class="relative bg-navy-800 hover:bg-navy-700 text-white border border-slate-700 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2.5 transition shadow-sm">
+                        <i class="fa-solid fa-clipboard-list text-orange-500 text-base"></i>
+                        <span class="hidden sm:inline">Requisición</span>
+                        <span id="quote-badge" class="bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                    </button>
+
+                    <!-- Botón menú móvil -->
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white p-2.5 rounded-lg border border-slate-700">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-t border-slate-800 px-4 pt-3 pb-5 space-y-2">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-navy-800 font-medium">Inicio</a>
+            <a href="#catalogo" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-navy-800 font-medium">Catálogo y Servicios</a>
+            <a href="#normativas" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-navy-800 font-medium">Certificaciones</a>
+            <a href="#contacto" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-navy-800 font-medium">Levantamiento Técnico</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-pattern relative overflow-hidden border-b border-slate-800">
+        <!-- Decoración visual de fondo -->
+        <div class="absolute -right-24 -top-24 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-24 bottom-0 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Columna de Texto -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                        Ingeniería en Seguridad Crítica Offshore & Marina
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+                        Protección Integral Contra <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Incendios y Gases Tóxicos</span>
+                    </h1>
+                    
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                        Suministro especializado, calibración certificada y mantenimiento en sitio para plataformas petroleras, embarcaciones de suministro y plantas industriales bajo estricto cumplimiento <strong class="text-white">NFPA, SOLAS y ABS</strong>.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#catalogo" class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white font-bold px-7 py-4 rounded-xl shadow-lg shadow-red-600/25 flex items-center justify-center gap-2.5 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            Explorar Catálogo y Servicios
+                        </a>
+                        <button onclick="toggleQuoteDrawer()" class="bg-navy-800 hover:bg-navy-700 text-white border border-slate-600 font-semibold px-7 py-4 rounded-xl flex items-center justify-center gap-2.5 transition">
+                            <i class="fa-solid fa-file-invoice text-orange-400"></i>
+                            Solicitar Cotización Rápida
+                        </button>
+                    </div>
+
+                    <!-- Métricas de Confianza -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-white">+15 Años</p>
+                            <p class="text-xs text-slate-400 mt-1">Experiencia en el Golfo</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-orange-400">100%</p>
+                            <p class="text-xs text-slate-400 mt-1">Trazabilidad Certificada</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-white">24/7</p>
+                            <p class="text-xs text-slate-400 mt-1">Respuesta en Muelle y Costa Afuera</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Técnica Destacada -->
+                <div class="lg:col-span-5">
+                    <div class="bg-navy-900/90 border border-slate-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-red-600/20 text-red-500 flex items-center justify-center">
+                                    <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-bold text-base">Estado Operativo y Cobertura</h3>
+                                    <p class="text-xs text-slate-400">Servicios Críticos Disponibles</p>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/20">
+                                Activo
+                            </span>
+                        </div>
+
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-start gap-3 p-3 rounded-xl bg-navy-950/60 border border-slate-800">
+                                <i class="fa-solid fa-fire-flame-curved text-orange-500 mt-1"></i>
+                                <div>
+                                    <p class="text-white font-semibold">Sistemas Fijos de Supresión (CO2 / FM-200 / Espuma)</p>
+                                    <p class="text-slate-400 text-xs mt-0.5">Inspección anual, pesaje ultrasónico y pruebas hidrostáticas.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-3 rounded-xl bg-navy-950/60 border border-slate-800">
+                                <i class="fa-solid fa-lungs text-sky-400 mt-1"></i>
+                                <div>
+                                    <p class="text-white font-semibold">Equipos de Respiración Autónoma (SCBA / EEBD)</p>
+                                    <p class="text-slate-400 text-xs mt-0.5">Recarga de aire grado D, prueba de flujo PosiChek y cilindros.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-3 rounded-xl bg-navy-950/60 border border-slate-800">
+                                <i class="fa-solid fa-radiation text-amber-400 mt-1"></i>
+                                <div>
+                                    <p class="text-white font-semibold">Detección de Gas Portátil y Fija (H2S, LEL, O2, CO)</p>
+                                    <p class="text-slate-400 text-xs mt-0.5">Venta de detectores multigas y calibración con gases patrón.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>¿Requieres inspección urgente en embarcación?</span>
+                            <a href="#contacto" class="text-orange-400 hover:text-orange-300 font-bold underline">Agendar ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Catálogo Interactivo -->
+    <section id="catalogo" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Encabezado de sección -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+            <div>
+                <span class="text-orange-600 font-bold text-xs uppercase tracking-widest">Suministro y Servicios Técnicos</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-1">Catálogo Industrial y Offshore</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl text-sm sm:text-base">
+                    Selecciona los equipos o servicios de mantenimiento que requiere tu operación y agrégalos a tu lista de requisición para generar una cotización formal.
+                </p>
+            </div>
+
+            <!-- Buscador -->
+            <div class="w-full md:w-80 relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    onkeyup="filterCatalog()"
+                    placeholder="Buscar equipo, norma o servicio..." 
+                    class="w-full pl-11 pr-4 py-3 bg-white border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-sm"
+                >
+            </div>
+        </div>
+
+        <!-- Filtros por Categoría -->
+        <div class="flex flex-wrap gap-2 mb-8" id="category-filters">
+            <button onclick="setCategory('all')" data-cat="all" class="cat-btn active bg-navy-900 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition shadow-sm">
+                Todos los Equipos y Servicios
+            </button>
+            <button onclick="setCategory('gas')" data-cat="gas" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition">
+                <i class="fa-solid fa-gauge-high text-amber-500 mr-1.5"></i>Detección de Gases
+            </button>
+            <button onclick="setCategory('fire')" data-cat="fire" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition">
+                <i class="fa-solid fa-fire-extinguisher text-red-600 mr-1.5"></i>Supresión y Contraincendio
+            </button>
+            <button onclick="setCategory('scba')" data-cat="scba" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition">
+                <i class="fa-solid fa-mask-ventilator text-sky-600 mr-1.5"></i>Equipos Respiratorios (SCBA)
+            </button>
+            <button onclick="setCategory('services')" data-cat="services" class="cat-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition">
+                <i class="fa-solid fa-screwdriver-wrench text-orange-600 mr-1.5"></i>Certificación y Mantenimiento
+            </button>
+        </div>
+
+        <!-- Grid de Productos / Servicios -->
+        <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Se llena dinámicamente desde JavaScript -->
+        </div>
+
+        <!-- Estado vacío si no hay resultados -->
+        <div id="empty-state" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 mt-6">
+            <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3"></i>
+            <h3 class="text-lg font-bold text-slate-700">No se encontraron equipos o servicios</h3>
+            <p class="text-sm text-slate-500 mt-1">Intenta con otro término de búsqueda o selecciona otra categoría.</p>
+            <button onclick="resetFilters()" class="mt-4 px-5 py-2 bg-navy-900 text-white text-sm font-semibold rounded-xl hover:bg-navy-800 transition">
+                Mostrar todo el catálogo
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección de Normativas y Certificaciones -->
+    <section id="normativas" class="bg-navy-900 text-white py-16 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-orange-400 font-bold text-xs uppercase tracking-widest">Cumplimiento Normativo Internacional</span>
+                <h2 class="text-3xl font-extrabold mt-2">Estándares de Seguridad Auditables</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-3">
+                    Nuestros procedimientos de taller, laboratorio de calibración y cuadrillas costa afuera operan bajo las regulaciones marítimas e industriales más exigentes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tarjeta NFPA -->
+                <div class="bg-navy-800/70 border border-slate-700 p-6 rounded-2xl hover:border-orange-500/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        NFPA
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Normativa NFPA</h3>
+                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                        Cumplimiento con NFPA 10 (Extintores), NFPA 12 (Sistemas CO2), NFPA 25 (Sistemas base agua) y NFPA 1981 (SCBA).
+                    </p>
+                </div>
+
+                <!-- Tarjeta SOLAS -->
+                <div class="bg-navy-800/70 border border-slate-700 p-6 rounded-2xl hover:border-orange-500/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-sky-600/20 text-sky-400 flex items-center justify-center font-extrabold text-base mb-4">
+                        SOLAS
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Convenio SOLAS / IMO</h3>
+                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                        Inspección de dispositivos de salvamento y sistemas contra incendio a bordo de buques mercantes, remolcadores y plataformas.
+                    </p>
+                </div>
+
+                <!-- Tarjeta ABS / DNV -->
+                <div class="bg-navy-800/70 border border-slate-700 p-6 rounded-2xl hover:border-orange-500/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        ABS
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Sociedades Clasificadoras</h3>
+                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                        Personal técnico avalado para inspecciones de clase ABS, DNV y Lloyd's Register en embarcaciones y unidades móviles (MODU).
+                    </p>
+                </div>
+
+                <!-- Tarjeta DOT / ISO -->
+                <div class="bg-navy-800/70 border border-slate-700 p-6 rounded-2xl hover:border-orange-500/50 transition">
+                    <div class="w-12 h-12 rounded-xl bg-amber-600/20 text-amber-400 flex items-center justify-center font-extrabold text-lg mb-4">
+                        DOT
+                    </div>
+                    <h3 class="font-bold text-lg text-white">Pruebas Hidrostáticas DOT</h3>
+                    <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                        Estación autorizada para pruebas hidrostáticas de cilindros de alta presión (acero, aluminio y fibra de carbono) con trazabilidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Levantamiento Técnico y Contacto -->
+    <section id="contacto" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+            <!-- Info lateral -->
+            <div class="lg:col-span-5 bg-navy-900 text-white p-8 sm:p-10 flex flex-col justify-between">
+                <div>
+                    <span class="text-orange-400 font-bold text-xs uppercase tracking-widest">Ingeniería en Campo</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">Solicita un Levantamiento Técnico</h2>
+                    <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                        ¿Necesitas programar la certificación anual de tu embarcación o actualizar la red de detección de gas H2S en plataforma? Nuestro equipo de ingeniería te atiende de inmediato.
+                    </p>
+
+                    <div class="space-y-5 mt-8 text-sm">
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-9 h-9 rounded-lg bg-navy-800 border border-slate-700 flex items-center justify-center text-orange-400 shrink-0">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-white">Taller Central y Laboratorio</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Parque Industrial Marítimo, Nave 14, Ciudad del Carmen, Camp.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-9 h-9 rounded-lg bg-navy-800 border border-slate-700 flex items-center justify-center text-orange-400 shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-white">Ventas y Licitaciones</p>
+                                <p class="text-slate-400 text-xs mt-0.5">cotizaciones@gulfshieldsafety.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-9 h-9 rounded-lg bg-navy-800 border border-slate-700 flex items-center justify-center text-orange-400 shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-white">Guardia Operativa</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Atención en muelle y embarque 365 días del año.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-6 border-t border-slate-800">
+                    <p class="text-xs text-slate-400">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i>
+                        Tiempo promedio de respuesta comercial: <strong class="text-white">menos de 2 horas</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <div class="lg:col-span-7 p-8 sm:p-10">
+                <form id="technical-form" onsubmit="handleTechnicalSubmit(event)" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Nombre Completo *</label>
+                            <input type="text" required placeholder="Ing. Carlos Mendoza" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Empresa / Embarcación *</label>
+                            <input type="text" required placeholder="Naviera del Golfo / Plataforma AKAL" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Correo Corporativo *</label>
+                            <input type="email" required placeholder="cmendoza@empresa.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Teléfono / WhatsApp *</label>
+                            <input type="tel" required placeholder="+52 (938) 000-0000" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Tipo de Requerimiento</label>
+                        <select class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-white focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none">
+                            <option>Inspección y Certificación Anual SOLAS / ABS</option>
+                            <option>Suministro de Detectores de Gas y Gases Patrón</option>
+                            <option>Mantenimiento y Recarga de Equipos SCBA / EEBD</option>
+                            <option>Sistemas Fijos de Supresión (CO2 / FM-200 / Polvo Químico)</option>
+                            <option>Otro Proyecto Industrial</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Detalles Técnicos o Fecha Estimada</label>
+                        <textarea rows="3" placeholder="Indique ubicación (puerto, patio o instalación offshore), cantidad aproximada de equipos o normativas aplicables..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-navy-900 hover:bg-navy-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-orange-400"></i>
+                        Enviar Solicitud de Levantamiento
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-slate-400 py-12 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-fire-extinguisher"></i>
+                </div>
+                <div>
+                    <span class="text-white font-bold tracking-tight">GULFSHIELD SAFETY SYSTEMS</span>
+                    <p class="text-xs text-slate-500">Seguridad Industrial, Marítima y Costa Afuera</p>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 text-center md:text-right">
+                © 2026 GulfShield Safety Systems S.A. de C.V. Todos los derechos reservados. <br class="sm:hidden">Cumplimiento NFPA · SOLAS · ABS.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Drawer Lateral: Lista de Requisición / Carrito de Cotización -->
+    <div id="quote-drawer-backdrop" onclick="toggleQuoteDrawer()" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+    
+    <aside id="quote-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+        <!-- Header del Drawer -->
+        <div class="bg-navy-900 text-white px-6 py-5 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-clipboard-check text-orange-400 text-xl"></i>
+                <div>
+                    <h3 class="font-bold text-base">Lista de Requisición</h3>
+                    <p class="text-xs text-slate-400">Cotización formal de equipos y servicios</p>
+                </div>
+            </div>
+            <button onclick="toggleQuoteDrawer()" class="text-slate-400 hover:text-white p-2 rounded-lg">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Lista de Items Agregados -->
+        <div id="quote-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Dinámico -->
+        </div>
+
+        <!-- Pie del Drawer con Resumen y Acciones -->
+        <div class="border-t border-slate-200 p-6 bg-slate-50 space-y-4">
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-600 font-medium">Total de partidas seleccionadas:</span>
+                <span id="quote-total-items" class="font-extrabold text-navy-900 text-base">0 unidades</span>
+            </div>
+
+            <div class="space-y-2.5">
+                <input type="text" id="quote-company-name" placeholder="Nombre de tu empresa o embarcación (Opcional)" class="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-orange-500 outline-none">
+                
+                <button onclick="generateQuoteSummary()" id="btn-generate-quote" disabled class="w-full bg-gradient-to-r from-red-600 to-orange-600 disabled:opacity-40 disabled:cursor-not-allowed hover:from-red-500 hover:to-orange-500 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-file-export"></i>
+                    Generar Resumen de Cotización
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Modal de Resumen de Cotización Lista para Enviar -->
+    <div id="quote-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden">
+            <div class="bg-navy-900 text-white px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-file-shield text-emerald-400"></i>
+                    <h3 class="font-bold text-base">Requisición Generada con Éxito</h3>
+                </div>
+                <button onclick="closeQuoteModal()" class="text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 space-y-4">
+                <p class="text-xs text-slate-600">
+                    Copia este resumen técnico para enviarlo por correo a tu departamento de compras o directamente a nuestros ejecutivos de ventas:
+                </p>
+                
+                <textarea id="quote-summary-text" readonly rows="9" class="w-full p-3.5 bg-slate-100 border border-slate-300 rounded-xl font-mono text-xs text-slate-800 focus:outline-none"></textarea>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button onclick="copyQuoteToClipboard()" class="flex-1 bg-navy-900 hover:bg-navy-800 text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-copy text-orange-400"></i>
+                        Copiar Requisición
+                    </button>
+                    <button onclick="confirmAndClearQuote()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-check"></i>
+                        Enviar a Ventas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación Toast Flotante (Reemplaza cualquier alert) -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-navy-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-sm font-medium">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message">Acción completada</span>
+    </div>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        // Base de datos de productos y servicios industriales
+        const catalogData = [
+            {
+                id: 'GS-101',
+                name: 'Detector Multigas Portátil 4-en-1 (H2S, LEL, O2, CO)',
+                category: 'gas',
+                categoryLabel: 'Detección de Gases',
+                norm: 'ATEX / IECEx / UL Clase I Div 1',
+                description: 'Monitor robusto con bomba integrada para espacios confinados, alarma sonora de 95dB y registro de eventos.',
+                icon: 'fa-gauge-high',
+                badgeColor: 'amber'
+            },
+            {
+                id: 'GS-102',
+                name: 'Equipo de Aire Autónomo SCBA 4500 PSI (30/45 min)',
+                category: 'scba',
+                categoryLabel: 'Equipos Respiratorios',
+                norm: 'NFPA 1981 / NIOSH / SOLAS',
+                description: 'Incluye arnés ergonómico resistente al fuego, mascarilla panorámica, regulador de demanda y cilindro de fibra de carbono.',
+                icon: 'fa-mask-ventilator',
+                badgeColor: 'sky'
+            },
+            {
+                id: 'GS-103',
+                name: 'Certificación Anual Sistema Fijo de CO2 y FM-200',
+                category: 'services',
+                categoryLabel: 'Certificación y Mantenimiento',
+                norm: 'SOLAS Cap. II-2 / NFPA 12 / ABS',
+                description: 'Inspección en embarcación o plataforma, pesaje ultrasónico de cilindros, prueba de disparo y emisión de certificado oficial.',
+                icon: 'fa-screwdriver-wrench',
+                badgeColor: 'orange'
+            },
+            {
+                id: 'GS-104',
+                name: 'Extintor Rodante de Polvo Químico Seco (PQS) 150 Lbs',
+                category: 'fire',
+                categoryLabel: 'Supresión y Contraincendio',
+                norm: 'NFPA 10 / UL Listed / USCG',
+                description: 'Unidad móvil de alta capacidad con recubrimiento anticorrosivo marino para helipuertos, cubiertas y cuartos de máquinas.',
+                icon: 'fa-fire-extinguisher',
+                badgeColor: 'red'
+            },
+            {
+                id: 'GS-105',
+                name: 'Dispositivo de Escape de Emergencia EEBD (15 min)',
+                category: 'scba',
+                categoryLabel: 'Equipos Respiratorios',
+                norm: 'SOLAS / MED / EN 1146',
+                description: 'Equipo de respiración de flujo constante con capucha de alta visibilidad para evacuación rápida en atmósferas tóxicas.',
+                icon: 'fa-lungs',
+                badgeColor: 'sky'
+            },
+            {
+                id: 'GS-106',
+                name: 'Cilindro de Gas Patrón de Calibración (Mezcla 4 Gases)',
+                category: 'gas',
+                categoryLabel: 'Detección de Gases',
+                norm: 'Trazabilidad NIST / ISO 17025',
+                description: 'Cilindro de aluminio de 58L o 116L con mezcla certificada (CH4, O2, H2S, CO) para pruebas Bump Test y calibración.',
+                icon: 'fa-flask-vial',
+                badgeColor: 'amber'
+            },
+            {
+                id: 'GS-107',
+                name: 'Prueba Hidrostática y Recarga de Cilindros SCBA',
+                category: 'services',
+                categoryLabel: 'Certificación y Mantenimiento',
+                norm: 'DOT / CGA C-1 / NFPA 1852',
+                description: 'Prueba hidrostática certificada cada 3/5 años, inspección interna y recarga con aire respirable Grado D.',
+                icon: 'fa-certificate',
+                badgeColor: 'orange'
+            },
+            {
+                id: 'GS-108',
+                name: 'Monitor Contraincendio Marino de Bronce / Acero Inox',
+                category: 'fire',
+                categoryLabel: 'Supresión y Contraincendio',
+                norm: 'NFPA 11 / ABS / DNV',
+                description: 'Monitor fijo de alto caudal para agua o espuma AFFF, rotación 360° y boquilla ajustable de chorro sólido a niebla.',
+                icon: 'fa-water',
+                badgeColor: 'red'
+            },
+            {
+                id: 'GS-109',
+                name: 'Transmisor Fijo de Gas H2S / LEL Infrarrojo',
+                category: 'gas',
+                categoryLabel: 'Detección de Gases',
+                norm: 'SIL 2 / ATEX / HART 4-20mA',
+                description: 'Detector fijo en acero inoxidable 316L con pantalla local OLED para áreas clasificadas en plataformas costa afuera.',
+                icon: 'fa-tower-broadcast',
+                badgeColor: 'amber'
+            }
+        ];
+
+        // Estado de la aplicación
+        let currentCategory = 'all';
+        let quoteCart = [];
+
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCatalog(catalogData);
+            updateQuoteUI();
+        });
+
+        // Renderizar tarjetas del catálogo
+        function renderCatalog(items) {
+            const grid = document.getElementById('catalog-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            items.forEach(item => {
+                const colorMap = {
+                    amber: 'bg-amber-50 text-amber-700 border-amber-200',
+                    sky: 'bg-sky-50 text-sky-700 border-sky-200',
+                    orange: 'bg-orange-50 text-orange-700 border-orange-200',
+                    red: 'bg-red-50 text-red-700 border-red-200'
+                };
+
+                const iconBgMap = {
+                    amber: 'bg-amber-500/10 text-amber-600',
+                    sky: 'bg-sky-500/10 text-sky-600',
+                    orange: 'bg-orange-500/10 text-orange-600',
+                    red: 'bg-red-500/10 text-red-600'
+                };
+
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm hover:shadow-lg hover:border-slate-300 transition duration-200';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-4">
+                            <span class="px-3 py-1 rounded-lg text-xs font-bold border ${colorMap[item.badgeColor]}">
+                                ${item.categoryLabel}
+                            </span>
+                            <span class="text-xs font-mono font-semibold text-slate-400">${item.id}</span>
+                        </div>
+
+                        <div class="flex items-center gap-3.5 mb-3">
+                            <div class="w-12 h-12 rounded-xl ${iconBgMap[item.badgeColor]} flex items-center justify-center shrink-0">
+                                <i class="fa-solid ${item.icon} text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-navy-900 text-base leading-snug">${item.name}</h3>
+                        </div>
+
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                            ${item.description}
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 space-y-3">
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                            <i class="fa-solid fa-shield-check text-emerald-600"></i>
+                            <span>Norma: <strong class="text-slate-700">${item.norm}</strong></span>
+                        </div>
+
+                        <button onclick="addToQuote('${item.id}')" class="w-full bg-navy-900 hover:bg-orange-600 text-white font-semibold py-2.5 px-4 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 shadow-xs">
+                            <i class="fa-solid fa-plus"></i>
+                            Agregar a Requisición
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filtrar por categoría
+        function setCategory(category) {
+            currentCategory = category;
+            
+            // Actualizar estilos de botones
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.className = 'cat-btn active bg-navy-900 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition shadow-sm';
+                } else {
+                    btn.className = 'cat-btn bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition';
+                }
+            });
+
+            filterCatalog();
+        }
+
+        // Filtrar por búsqueda y categoría combinadas
+        function filterCatalog() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            
+            const filtered = catalogData.filter(item => {
+                const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
+                const matchesSearch = item.name.toLowerCase().includes(searchTerm) || 
+                                      item.description.toLowerCase().includes(searchTerm) || 
+                                      item.norm.toLowerCase().includes(searchTerm) ||
+                                      item.id.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            renderCatalog(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            setCategory('all');
+        }
+
+        // Gestión del Carrito de Requisición
+        function addToQuote(productId) {
+            const product = catalogData.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = quoteCart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                quoteCart.push({ ...product, qty: 1 });
+            }
+
+            updateQuoteUI();
+            showToast(`Agregado: ${product.name.substring(0, 32)}...`);
+        }
+
+        function updateQuantity(productId, delta) {
+            const index = quoteCart.findIndex(item => item.id === productId);
+            if (index === -1) return;
+
+            quoteCart[index].qty += delta;
+            if (quoteCart[index].qty <= 0) {
+                quoteCart.splice(index, 1);
+            }
+            updateQuoteUI();
+        }
+
+        function removeFromQuote(productId) {
+            quoteCart = quoteCart.filter(item => item.id !== productId);
+            updateQuoteUI();
+        }
+
+        function updateQuoteUI() {
+            const badge = document.getElementById('quote-badge');
+            const container = document.getElementById('quote-items-container');
+            const totalLabel = document.getElementById('quote-total-items');
+            const generateBtn = document.getElementById('btn-generate-quote');
+
+            const totalQty = quoteCart.reduce((sum, item) => sum + item.qty, 0);
+            badge.textContent = totalQty;
+            totalLabel.textContent = `${totalQty} ${totalQty === 1 ? 'partida' : 'partidas'}`;
+            generateBtn.disabled = quoteCart.length === 0;
+
+            if (quoteCart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 px-4">
+                        <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-clipboard-list text-2xl"></i>
+                        </div>
+                        <p class="font-bold text-slate-700 text-sm">Tu lista de requisición está vacía</p>
+                        <p class="text-xs text-slate-500 mt-1">Explora el catálogo y agrega los equipos o servicios de certificación que necesites cotizar.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = '';
+            quoteCart.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex flex-col gap-2.5';
+                el.innerHTML = `
+                    <div class="flex justify-between items-start gap-2">
+                        <div>
+                            <span class="text-[11px] font-mono font-bold text-orange-600">${item.id}</span>
+                            <h4 class="font-bold text-navy-900 text-xs sm:text-sm leading-snug">${item.name}</h4>
+                        </div>
+                        <button onclick="removeFromQuote('${item.id}')" class="text-slate-400 hover:text-red-600 p-1" title="Eliminar">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-200/70">
+                        <span class="text-[11px] text-slate-500">${item.norm}</span>
+                        <div class="flex items-center gap-2 bg-white border border-slate-300 rounded-lg px-1.5 py-0.5">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center text-slate-600 hover:text-navy-900 font-bold">-</button>
+                            <span class="text-xs font-bold text-navy-900 w-5 text-center">${item.qty}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center text-slate-600 hover:text-navy-900 font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        // Abrir / Cerrar Drawer de Cotización
+        function toggleQuoteDrawer() {
+            const drawer = document.getElementById('quote-drawer');
+            const backdrop = document.getElementById('quote-drawer-backdrop');
+            
+            const isClosed = drawer.classList.contains('translate-x-full');
+            if (isClosed) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        // Abrir / Cerrar Menú Móvil
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Generar Resumen de Cotización
+        function generateQuoteSummary() {
+            if (quoteCart.length === 0) return;
+
+            const company = document.getElementById('quote-company-name').value.trim() || 'Cliente Industrial / Offshore';
+            const dateStr = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
+            const folio = 'REQ-' + Math.floor(100000 + Math.random() * 900000);
+
+            let text = `====================================================\n`;
+            text += `SOLICITUD DE COTIZACIÓN - GULFSHIELD SAFETY SYSTEMS\n`;
+            text += `====================================================\n`;
+            text += `Folio: ${folio}\n`;
+            text += `Fecha: ${dateStr}\n`;
+            text += `Empresa / Embarcación: ${company}\n`;
+            text += `----------------------------------------------------\n`;
+            text += `PARTIDAS SOLICITADAS:\n\n`;
+
+            quoteCart.forEach((item, index) => {
+                text += `${index + 1}. [${item.id}] ${item.name}\n`;
+                text += `   - Cantidad: ${item.qty} unidad(es) / servicio(s)\n`;
+                text += `   - Norma aplicable: ${item.norm}\n\n`;
+            });
+
+            text += `----------------------------------------------------\n`;
+            text += `Nota: Se solicita disponibilidad, tiempo de entrega en\n`;
+            text += `puerto/patio y alcance de certificación correspondiente.\n`;
+            text += `====================================================`;
+
+            document.getElementById('quote-summary-text').value = text;
+            toggleQuoteDrawer();
+            
+            const modal = document.getElementById('quote-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeQuoteModal() {
+            const modal = document.getElementById('quote-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Copiar al portapapeles usando execCommand por compatibilidad en iframe
+        function copyQuoteToClipboard() {
+            const textarea = document.getElementById('quote-summary-text');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            try {
+                document.execCommand('copy');
+                showToast('Requisición copiada al portapapeles');
+            } catch (err) {
+                showToast('No se pudo copiar automáticamente', 'error');
+            }
+        }
+
+        function confirmAndClearQuote() {
+            closeQuoteModal();
+            quoteCart = [];
+            document.getElementById('quote-company-name').value = '';
+            updateQuoteUI();
+            showToast('Solicitud registrada. Un asesor comercial te contactará.');
+        }
+
+        // Envío del formulario de levantamiento técnico
+        function handleTechnicalSubmit(e) {
+            e.preventDefault();
+            e.target.reset();
+            showToast('Solicitud de levantamiento enviada correctamente');
+        }
+
+        // Sistema de notificación Toast
+        let toastTimeout;
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast-notification');
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMsg.textContent = message;
+            if (type === 'error') {
+                toastIcon.className = 'fa-solid fa-circle-exclamation text-red-400 text-lg';
+            } else {
+                toastIcon.className = 'fa-solid fa-circle-check text-emerald-400 text-lg';
+            }
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3200);
+        }
+    </script>
+</body>
+</html>
